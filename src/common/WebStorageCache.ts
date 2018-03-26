@@ -1,12 +1,13 @@
 import MD5 = require('crypto-js/md5');
 import { WebStorageCacheItem, IWebStorageCacheItem } from '../model/WebStorageCacheItem';
+import { ILocalDataStore } from '../model/LocalDataStore';
 
 export const enum StorageType {
   localStorage = 'localStorage',
   sessionStorage = 'sessionStorage'
 }
 
-export class WebStorageCache {
+export class WebStorageCache implements ILocalDataStore {
   private isStoreEnabled = false;
 
   constructor(

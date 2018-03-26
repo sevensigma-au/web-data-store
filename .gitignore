@@ -60,4 +60,5 @@ typings/
 # Output
 lib/
 dist/
+temp/
 
