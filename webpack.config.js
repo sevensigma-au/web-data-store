@@ -2,6 +2,9 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const Visualizer = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function getPlugins() {
   let plugins = [];
@@ -11,6 +14,22 @@ function getPlugins() {
     // package.json.
     new webpack.EnvironmentPlugin(['NODE_ENV'])
   );
+
+  // Provides a sunburst chart that makes it easier to perform a quick high level overview.
+  plugins.push(
+    new Visualizer({
+      filename: '../temp/visualizer.html'
+    })
+  );
+
+  // Provides a map that makes it easier to perform a detailed inspection.
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: '../temp/bundle-analyzer.html',
+      openAnalyzer: false
+    })
+  );  
 
   return plugins;
 }
@@ -30,7 +49,7 @@ module.exports = function (env) {
       },
       resolve: {
         extensions: ['.ts', '.tsx', '.js']
-      },
+      },    
       target: 'web',
       devtool: 'source-map',
       module: {

@@ -1,12 +1,12 @@
 {
   "name": "@sevensigma/web-data-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This package provides classes for caching data in the browser and synchronising shared access to them.",
   "main": "dist/web-data-store.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean-dist": "rimraf ./dist && rimraf ./lib && mkdir dist",
+    "clean-dist": "rimraf ./dist && rimraf ./lib && rimraf ./temp && mkdir dist",
     "lint": "./node_modules/.bin/tslint --project ./tsconfig.json",
     "prebuild": "npm-run-all lint clean-dist",
     "build": "SET NODE_ENV=production && webpack"
@@ -22,9 +22,6 @@
   },
   "homepage": "https://github.com/sevensigma-au/web-data-store#readme",
   "devDependencies": {
-    "@types/crypto-js": "3.1.38",
-    "crypto-js": "3.1.9-1",
-    "es6-promise": "4.1.1",
     "npm-run-all": "4.1.2",
     "rimraf": "2.6.2",
     "ts-loader": "3.5.0",
@@ -35,9 +32,9 @@
     "webpack-node-externals": "1.6.0",
     "webpack-visualizer-plugin": "0.1.11"
   },
-  "peerDependencies": {
-    "@types/crypto-js": "^3.1.38",
-    "crypto-js": "^3.1.9-1",
-    "es6-promise": "^4.1.1"
+  "dependencies": {
+    "@types/crypto-js": "3.1.38",
+    "crypto-js": "3.1.9-1",
+    "es6-promise": "4.1.1"
   }
 }
